@@ -36,12 +36,14 @@ if [ $OPENSSL != NONE ]; then
             have=NGX_OPENSSL . auto/have
             have=NGX_SSL . auto/have
 
-            CORE_INCS="$CORE_INCS $OPENSSL/.openssl/include"
-            CORE_DEPS="$CORE_DEPS $OPENSSL/.openssl/include/openssl/ssl.h"
-            CORE_LIBS="$CORE_LIBS $OPENSSL/.openssl/lib/libssl.a"
-            CORE_LIBS="$CORE_LIBS $OPENSSL/.openssl/lib/libcrypto.a"
-            CORE_LIBS="$CORE_LIBS $NGX_LIBDL"
-            CORE_LIBS="$CORE_LIBS $NGX_LIBPTHREAD"
+            #CORE_INCS="$CORE_INCS $OPENSSL/.openssl/include"
+            #CORE_DEPS="$CORE_DEPS $OPENSSL/.openssl/include/openssl/ssl.h"
+            #CORE_LIBS="$CORE_LIBS $OPENSSL/.openssl/lib/libssl.a"
+            #CORE_LIBS="$CORE_LIBS $OPENSSL/.openssl/lib/libcrypto.a"
+            #CORE_LIBS="$CORE_LIBS $NGX_LIBDL"
+            #CORE_LIBS="$CORE_LIBS $NGX_LIBPTHREAD"
+				CORE_INCS="$CORE_INCS $OPENSSL/include $OPENSSL_PLATFORM_INCLUDE"
+				CORE_LIBS="$CORE_LIBS -L$OPENSSL_BIN -lssl -lcrypto"
 
             if [ "$NGX_PLATFORM" = win32 ]; then
                 CORE_LIBS="$CORE_LIBS -lgdi32 -lcrypt32 -lws2_32"

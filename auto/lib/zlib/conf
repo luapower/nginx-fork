@@ -33,9 +33,9 @@ if [ $ZLIB != NONE ]; then
 
         *)
             have=NGX_ZLIB . auto/have
-            LINK_DEPS="$LINK_DEPS $ZLIB/libz.a"
-            CORE_LIBS="$CORE_LIBS $ZLIB/libz.a"
-            #CORE_LIBS="$CORE_LIBS -L $ZLIB -lz"
+            #LINK_DEPS="$LINK_DEPS $ZLIB/libz.a"
+            #CORE_LIBS="$CORE_LIBS $ZLIB/libz.a"
+            CORE_LIBS="$CORE_LIBS -L$ZLIB_BIN -lz"
         ;;
 
     esac
